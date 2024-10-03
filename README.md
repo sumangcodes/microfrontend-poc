@@ -5,7 +5,7 @@ This repository demonstrates a proof of concept (POC) for implementing micro-fro
 
 ## Project Structure
 - **shell-pp**: The main application that loads remote components.
-- **remote-app**: The micro-frontend application that exposes components to be used by the host.
+- **microfrontend**: The micro-frontend application that exposes components to be used by the host.
 
 ## Technologies Used
 - **React**: For building user interfaces.
@@ -27,13 +27,13 @@ This repository demonstrates a proof of concept (POC) for implementing micro-fro
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/your-username/micro-frontend-hub.git MicroFrontendPOC
-   cd MicroFrontendPOC
+   cd microfrontendPOC
 
-Install Dependencies: Navigate to both shell-pp and remote-app directories and install dependencies
+Install Dependencies: Navigate to both shell-pp and microfrontend directories and install dependencies
 
 cd shell-pp
 npm install
-cd ../remote-app
+cd ../microfrontend
 npm install
 
 Run Applications Locally: Start both applications on different ports
@@ -41,22 +41,22 @@ Run Applications Locally: Start both applications on different ports
 # In shell-pp directory
 npm start
 
-# In remote-app directory
+# In microfrontend directory
 npm start
 
 # Build Docker Images:
 docker build -t your-username/shell-pp ./shell-pp
 
-docker build -t your-username/remote-app ./remote-app
+docker build -t your-username/microfrontend ./microfrontend
 
 # Push Docker Images to GCR:
 docker tag your-username/shell-pp gcr.io/YOUR_PROJECT_ID/shell-pp
 
-docker tag your-username/remote-app gcr.io/YOUR_PROJECT_ID/remote-app
+docker tag your-username/microfrontend gcr.io/YOUR_PROJECT_ID/microfrontend
 
 docker push gcr.io/YOUR_PROJECT_ID/shell-pp
 
-docker push gcr.io/YOUR_PROJECT_ID/remote-app
+docker push gcr.io/YOUR_PROJECT_ID/microfrontend
 
 
 
