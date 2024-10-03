@@ -46,20 +46,29 @@ npm start
 
 # Build Docker Images:
 docker build -t your-username/host-app ./host-app
+
 docker build -t your-username/remote-app ./remote-app
 
 # Push Docker Images to GCR:
 docker tag your-username/host-app gcr.io/YOUR_PROJECT_ID/host-app
+
 docker tag your-username/remote-app gcr.io/YOUR_PROJECT_ID/remote-app
+
 docker push gcr.io/YOUR_PROJECT_ID/host-app
+
 docker push gcr.io/YOUR_PROJECT_ID/remote-app
+
 
 
 # Deploy to GKE: Apply Kubernetes deployment and service files
 
 kubectl apply -f k8s/host-deployment.yaml
+
 kubectl apply -f k8s/remote-deployment.yaml
+
 kubectl apply -f k8s/host-service.yaml
+
+
 kubectl apply -f k8s/remote-service.yaml
 
 # CI/CD Pipeline
