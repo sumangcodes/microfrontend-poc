@@ -2,7 +2,7 @@ import React from 'react';
 import './AppComponent2.css'; // Importing the CSS file
 
 const AppComponent2 = () => {
-  const appName = "My Cool Microfrontend Remote App";
+  const appName = "My Cool Microfrontend Remote App One";
   const ipAddress = window.location.hostname; // This gets the hostname (IP or domain)
   const port = window.location.port; // This gets the port number
   const techInfo = "Built with React, Node.js, and Express";

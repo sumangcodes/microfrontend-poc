@@ -36,7 +36,7 @@ module.exports = {
       name: "MicroFrontend",
       filename: "remoteEntry.js",
       exposes: {
-        "./App": "./src/App"
+        './App': './src/App'
       },
       shared: { react: { singleton: true, eager: true }, "react-dom": { singleton: true, eager: true } },
     })
