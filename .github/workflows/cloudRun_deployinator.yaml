@@ -39,19 +39,19 @@ jobs:
       - name: Build and push microfrontend container
         run: |
           cd microfrontend
-          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/microfrontend:latest" .
-          docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/microfrontend:latest"
+          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/microfrontend/microfrontend:latest" .
+          docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/microfrontend/microfrontend:latest"
 
       - name: Build and push shell-pp container
         run: |
           cd shell-pp
-          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/shell-pp:latest" .
-          docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/shell-pp:latest"
+          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/shellapp/shell-pp:latest" .
+          docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/shellapp/shell-pp:latest"
 
       - name: Deploy microfrontend to Cloud Run
         run: |
           gcloud run deploy microfrontend \
-            --image ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/microfrontend:latest \
+            --image ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/microfrontend/microfrontend:latest \
             --region ${{ env.REGION }} \
             --platform managed \
             --allow-unauthenticated
@@ -59,7 +59,7 @@ jobs:
       - name: Deploy shell-pp to Cloud Run
         run: |
           gcloud run deploy shell-pp \
-            --image ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/shell-pp:latest \
+            --image ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/shellapp/shell-pp:latest \
             --region ${{ env.REGION }} \
             --platform managed \
             --allow-unauthenticated
