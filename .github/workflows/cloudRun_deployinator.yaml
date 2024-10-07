@@ -25,9 +25,11 @@ jobs:
       - name: Clear Google Cloud credentials file
         run: unset GOOGLE_APPLICATION_CREDENTIALS
 
-      - name: Set up Google Cloud authentication
-        uses: google-github-actions/auth@v1
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
         with:
+          create_credentials_file: true
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
@@ -38,8 +40,6 @@ jobs:
         run: |
           gcloud config list
           gcloud auth list
-
-      
 
       - name: Configure Docker to use Google Cloud credentials
         run: |
