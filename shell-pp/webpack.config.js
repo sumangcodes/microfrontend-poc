@@ -14,6 +14,7 @@ module.exports = {
   devServer: {
     static: path.join(__dirname, "dist"),
     port: 8080,
+    allowedHosts: 'all',
     historyApiFallback:{
       index:'/public/index.html'
     },

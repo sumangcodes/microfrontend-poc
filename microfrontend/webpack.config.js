@@ -10,6 +10,7 @@ module.exports = {
   mode: 'development',
   devServer: {
     static: path.join(__dirname, "dist"),
+    allowedHosts: 'all',
     port: 8080,
   },
   module: {
