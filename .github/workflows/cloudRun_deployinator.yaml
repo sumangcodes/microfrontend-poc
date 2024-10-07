@@ -32,7 +32,9 @@ jobs:
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
       - name: Verify authentication
-        run: gcloud auth list
+        run: |
+          gcloud config set account ${{ secrets.WIF_SERVICE_ACCOUNT }}
+          gcloud auth list
 
 
       - name: Configure Docker to use Google Cloud credentials
