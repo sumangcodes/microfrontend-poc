@@ -21,9 +21,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Clear Google Cloud credentials file
         run: unset GOOGLE_APPLICATION_CREDENTIALS
-
 
       - name: Set up Google Cloud authentication
         uses: google-github-actions/auth@v1
@@ -31,11 +31,19 @@ jobs:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
+      - name: Set Active Account
+        run: gcloud config set account ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
       - name: Verify authentication
         run: |
-          gcloud config set account ${{ secrets.WIF_SERVICE_ACCOUNT }}
+          gcloud config list
           gcloud auth list
 
+      - name: Print Credentials and Account (Debug)
+        run: |
+          echo "Using Service Account: ${{ secrets.WIF_SERVICE_ACCOUNT }}"
+          gcloud auth list
+          gcloud projects get-iam-policy ${{ env.PROJECT_ID }}
 
       - name: Configure Docker to use Google Cloud credentials
         run: |
