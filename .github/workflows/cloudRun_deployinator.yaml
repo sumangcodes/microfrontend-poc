@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Clear Google Cloud credentials file
+        run: unset GOOGLE_APPLICATION_CREDENTIALS
+
 
       - name: Set up Google Cloud authentication
         uses: google-github-actions/auth@v1
